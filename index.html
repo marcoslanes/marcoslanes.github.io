@@ -4,6 +4,9 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Marcos Lanes</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
   <style>
     :root {
@@ -15,6 +18,7 @@
       --button-hover: #4f46e530;
       --accent-color: #4f46e5;
       --font-main: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      --font-title: 'Bebas Neue', cursive;
     }
 
     body {
@@ -31,10 +35,17 @@
       transition: background-color 0.3s, color 0.3s;
     }
 
+    body.light-mode {
+      background-color: var(--bg-light);
+      color: var(--text-light);
+    }
+
     h1 {
       margin-top: 1rem;
-      font-size: 2.5rem;
+      font-size: 3rem;
       text-align: center;
+      font-family: var(--font-title);
+      letter-spacing: 1px;
     }
 
     .profile-img {
@@ -103,8 +114,36 @@
       color: inherit;
     }
 
+    .offer-card {
+      display: flex;
+      align-items: center;
+      justify-content: flex-start;
+      gap: 0.8rem;
+      text-align: left;
+      padding: 1rem;
+      background-color: var(--button-bg);
+      border: 1px solid var(--accent-color);
+      border-radius: 8px;
+      color: inherit;
+      font-weight: bold;
+      text-decoration: none;
+      transition: background-color 0.3s, transform 0.2s, box-shadow 0.2s;
+    }
+
+    .offer-card:hover {
+      background-color: var(--button-hover);
+      transform: scale(1.05);
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+    }
+
+    .offer-card i {
+      width: 24px;
+      text-align: center;
+      color: var(--accent-color);
+    }
+
     @media (max-width: 600px) {
-      .link-button {
+      .link-button, .offer-card {
         font-size: 1rem;
         padding: 0.8rem;
       }
@@ -122,9 +161,19 @@
     <a href="https://www.linkedin.com/in/marcoslanes" class="link-button" target="_blank"><i class="fab fa-linkedin"></i> LinkedIn</a>
   </div>
 
+  <div class="offers" style="margin-top: 3rem; width: 90%; max-width: 400px; display: flex; flex-direction: column; gap: 1rem;">
+    <h2 style="font-family: var(--font-title); font-size: 2rem; text-align: center;">Ofertas Especiais</h2>
+    <a href="https://www.gvgmall.com/gvg/laneswin11" class="offer-card"><i class="fas fa-shopping-cart"></i><span>Windows 11 Original</span></a>
+    <a href="https://encurtador.com.br/TAsiE" class="offer-card"><i class="fas fa-shopping-cart"></i><span>Clamper Energia 8 Preto LCF</span></a>
+    <a href="https://s.click.aliexpress.com/e/_oCcPQ53" class="offer-card"><i class="fas fa-shopping-cart"></i><span>Bandai-Kamen Rider Garage Kit modelo</span></a>
+  </div>
+
   <script>
     function toggleTheme() {
-      document.body.classList.toggle('dark-mode');
+      const body = document.body;
+      const isDark = body.classList.contains('dark-mode');
+      body.classList.toggle('dark-mode', !isDark);
+      body.classList.toggle('light-mode', isDark);
     }
   </script>
 </body>
