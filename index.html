@@ -15,6 +15,7 @@
       --text: #ffffff;
       --card-bg: rgba(255, 255, 255, 0.05);
       --card-border: rgba(255, 255, 255, 0.1);
+      --success: #22c55e;
     }
 
     .light-mode {
@@ -37,7 +38,6 @@
       transition: background-color 0.3s, color 0.3s;
     }
 
-    /* Botão de Tema */
     .toggle-theme {
       position: absolute;
       top: 1.5rem;
@@ -50,6 +50,7 @@
       cursor: pointer;
       font-size: 0.9rem;
       font-weight: 600;
+      z-index: 10;
     }
 
     .container {
@@ -136,21 +137,76 @@
       border-color: transparent;
     }
 
-    /* Hover Colors */
+    /* Cores de Hover Específicas */
     .youtube:hover { background: #FF0000; }
     .kick:hover { background: #00E701; color: black; }
     .twitch:hover { background: #9146FF; }
     .instagram:hover { background: linear-gradient(45deg, #f09433, #dc2743, #bc1888); }
-    /* Estilo para o botão de contato */
-    .contact:hover { background: #2563eb; }
 
-    .offer-tag {
-      margin-left: auto;
-      background: rgba(128, 128, 128, 0.2);
-      padding: 2px 8px;
-      border-radius: 4px;
-      font-size: 0.7rem;
+    /* --- ESTILO DA THUMB DE OFERTA CHAMATIVA --- */
+    .offer-card {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding: 1.8rem;
+      background: linear-gradient(135deg, rgba(79, 70, 229, 0.15) 0%, rgba(255, 255, 255, 0.05) 100%);
+      border: 2px solid var(--primary);
+      border-radius: 16px;
+      text-decoration: none;
+      color: inherit;
+      position: relative;
+      overflow: hidden;
+      transition: all 0.3s ease;
     }
+
+    .offer-card:hover {
+      transform: scale(1.03);
+      box-shadow: 0 0 20px rgba(79, 70, 229, 0.4);
+    }
+
+    .offer-card i {
+      font-size: 2.8rem;
+      margin-bottom: 12px;
+      color: #fbbf24; /* Dourado */
+    }
+
+    .offer-title {
+      font-size: 1.2rem;
+      font-weight: 800;
+      margin-bottom: 8px;
+      text-transform: uppercase;
+    }
+
+    .offer-badge {
+      background: var(--success);
+      color: white;
+      padding: 4px 15px;
+      border-radius: 50px;
+      font-size: 0.75rem;
+      font-weight: 800;
+      letter-spacing: 1px;
+    }
+
+    /* Efeito de Brilho (Shine) */
+    .offer-card::after {
+      content: '';
+      position: absolute;
+      top: -50%;
+      left: -150%;
+      width: 200%;
+      height: 200%;
+      background: linear-gradient(45deg, transparent, rgba(255,255,255,0.2), transparent);
+      transform: rotate(45deg);
+      animation: shine 3.5s infinite;
+    }
+
+    @keyframes shine {
+      0% { left: -150%; }
+      20% { left: 150%; }
+      100% { left: 150%; }
+    }
+    /* ------------------------------------------ */
+
   </style>
 </head>
 <body>
@@ -160,7 +216,7 @@
   <div class="container">
     <img src="new_logo_lanes_01.png" alt="Marcos Lanes" class="profile-img" />
     <h1>Marcos Lanes</h1>
-    <p class="subtitle"></p>
+    <p class="subtitle">Conteúdo, Tecnologia & Ofertas</p>
 
     <div class="section-title">Redes Sociais</div>
     <div class="link-list">
@@ -178,18 +234,18 @@
       </a>
     </div>
 
-    <div class="section-title">Ofertas Imperdíveis</div>
-<div class="link-list">
-  <a href="https://www.gvgmall.com/gvg/laneswin11" class="offer-card" target="_blank">
-    <i class="fab fa-windows"></i>
-    <span class="offer-title">Windows 11 Pro (Chave Vitalícia)</span>
-    <span class="offer-price">Use o cupom: LANES</span>
-  </a>
-</div>
+    <div class="section-title">Oferta Especial</div>
+    <div class="link-list">
+      <a href="https://www.gvgmall.com/gvg/laneswin11" class="offer-card" target="_blank">
+        <i class="fab fa-windows"></i>
+        <span class="offer-title">Windows 11 Pro Vitalício</span>
+        <span class="offer-badge">CUPOM: LANES</span>
+      </a>
+    </div>
 
     <div class="section-title">Contato</div>
     <div class="link-list">
-      <a href="contato.html" class="item-card contact">
+      <a href="contato.html" class="item-card">
         <i class="fas fa-envelope"></i> Enviar Mensagem
       </a>
     </div>
