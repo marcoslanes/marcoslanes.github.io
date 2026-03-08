@@ -1,0 +1,61 @@
+/* Card de Oferta Especial */
+.offer-card {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 1.5rem;
+    background: linear-gradient(135deg, rgba(79, 70, 229, 0.1) 0%, rgba(255, 255, 255, 0.05) 100%);
+    border: 2px solid var(--primary); /* Borda na cor principal */
+    border-radius: 16px;
+    text-decoration: none;
+    color: inherit;
+    position: relative;
+    overflow: hidden;
+    transition: all 0.3s ease;
+}
+
+.offer-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 20px rgba(79, 70, 229, 0.3);
+    background: linear-gradient(135deg, rgba(79, 70, 229, 0.2) 0%, rgba(255, 255, 255, 0.08) 100%);
+}
+
+.offer-card i {
+    font-size: 2.5rem;
+    margin-bottom: 10px;
+    color: #fbbf24; /* Cor dourada para o ícone */
+}
+
+.offer-title {
+    font-size: 1.1rem;
+    font-weight: 800;
+    margin-bottom: 5px;
+}
+
+.offer-price {
+    font-size: 0.8rem;
+    background: #22c55e; /* Verde sucesso */
+    color: white;
+    padding: 4px 12px;
+    border-radius: 20px;
+    text-transform: uppercase;
+    font-weight: bold;
+}
+
+/* Efeito de brilho passando (Shine effect) */
+.offer-card::after {
+    content: '';
+    position: absolute;
+    top: -50%;
+    left: -50%;
+    width: 200%;
+    height: 200%;
+    background: linear-gradient(45deg, transparent, rgba(255,255,255,0.1), transparent);
+    transform: rotate(45deg);
+    animation: shine 4s infinite;
+}
+
+@keyframes shine {
+    0% { transform: translateX(-150%) rotate(45deg); }
+    100% { transform: translateX(150%) rotate(45deg); }
+}
