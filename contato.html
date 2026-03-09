@@ -40,20 +40,20 @@
     }
 
     .toggle-theme {
-      position: absolute;
-      top: 1.5rem;
-      left: 1.5rem;
-      background: var(--card-bg);
-      border: 1px solid var(--card-border);
-      color: var(--text);
-      padding: 8px 12px;
-      border-radius: 8px;
-      cursor: pointer;
-      font-size: 0.9rem;
-      font-weight: 600;
-      z-index: 10;
-    }
-
+        position: fixed; /* Mudamos de absolute para fixed para ele não sair do lugar ao rolar */
+        top: 1rem;
+        left: 1rem;
+        background: var(--card-bg);
+        border: 1px solid var(--card-border);
+        color: var(--text);
+        padding: 8px 12px;
+        border-radius: 8px;
+        cursor: pointer;
+        font-size: 0.9rem;
+        font-weight: 600;
+        z-index: 9999; /* Garante que fique acima de tudo */
+        width: auto; /* Impede que ele tente ocupar a largura total */
+    }        
     .container {
       width: 90%;
       max-width: 450px;
