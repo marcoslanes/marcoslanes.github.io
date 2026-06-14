@@ -1,3 +1,15 @@
+Aqui está uma proposta de repaginação moderna para o seu agregador de links. A nova versão utiliza a tendência de **Glassmorphism** (efeito de vidro fosco), gradientes de fundo mais sofisticados, sombras dinâmicas e introduz uma breve bio abaixo do seu nome para contextualizar seu perfil como Analista de TI e Streamer.
+
+### O que mudou:
+
+* **Design Clean e Profundo:** Substituição do fundo preto sólido por um gradiente radial moderno escuro.
+* **Cards em Glassmorphism:** Botões translúcidos com desfoque de fundo (`backdrop-filter`) e bordas super finas.
+* **Identidade Visual:** Adição da sua bio de forma orgânica abaixo do título.
+* **Animações Refinadas:** Efeitos de hover mais suaves com brilhos (`box-shadow`) que reagem à cor de cada marca (YouTube, Twitch, etc.).
+
+### Código Atualizado (`index.html`):
+
+```html
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
@@ -122,4 +134,169 @@
       background: var(--card-bg);
       backdrop-filter: blur(12px);
       -webkit-backdrop-filter: blur(12px);
-      border:
+      border: 1px solid var(--card-border);
+      border-radius: 16px;
+      text-decoration: none;
+      color: var(--text);
+      font-weight: 600;
+      font-size: 1rem;
+      transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .item-card i {
+      font-size: 1.3rem;
+      width: 44px;
+      height: 44px;
+      margin-right: 15px;
+      background: rgba(255, 255, 255, 0.05);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border-radius: 12px;
+      transition: all 0.3s ease;
+    }
+
+    .item-card:hover {
+      transform: translateY(-3px);
+      background: rgba(255, 255, 255, 0.08);
+    }
+
+    /* Cores de Hover Específicas com Glow */
+    .youtube:hover { border-color: #ff0000; box-shadow: 0 4px 20px rgba(255, 0, 0, 0.2); }
+    .youtube:hover i { color: #ff0000; background: rgba(255, 0, 0, 0.1); }
+    
+    .kick:hover { border-color: #53fc18; box-shadow: 0 4px 20px rgba(83, 252, 24, 0.2); }
+    .kick:hover i { color: #53fc18; background: rgba(83, 252, 24, 0.1); }
+    
+    .twitch:hover { border-color: #9146FF; box-shadow: 0 4px 20px rgba(145, 70, 255, 0.2); }
+    .twitch:hover i { color: #9146FF; background: rgba(145, 70, 255, 0.1); }
+    
+    .instagram:hover { border-color: #e1306c; box-shadow: 0 4px 20px rgba(225, 48, 108, 0.2); }
+    .instagram:hover i { color: #e1306c; background: rgba(225, 48, 108, 0.1); }
+
+    .mercadolivre:hover { border-color: #ffe600; box-shadow: 0 4px 20px rgba(255, 230, 0, 0.2); }
+    .mercadolivre:hover i { color: #ffe600; background: rgba(255, 230, 0, 0.1); }
+
+    /* Card de Oferta Modernizado */
+    .offer-card {
+      background: linear-gradient(135deg, rgba(99, 102, 241, 0.1) 0%, rgba(255, 255, 255, 0.02) 100%);
+      border: 1px solid var(--primary);
+      flex-direction: column;
+      padding: 1.5rem;
+      text-align: center;
+      box-shadow: 0 0 15px var(--primary-glow);
+    }
+
+    .offer-card i {
+      background: transparent;
+      font-size: 2.5rem;
+      color: #38bdf8;
+      width: auto;
+      height: auto;
+      margin: 0 0 10px 0;
+    }
+
+    .offer-card .offer-title {
+      font-weight: 800;
+      font-size: 1.1rem;
+      letter-spacing: 0.5px;
+    }
+
+    .offer-card:hover {
+      transform: translateY(-4px) scale(1.02);
+      box-shadow: 0 8px 25px var(--primary-glow);
+      background: linear-gradient(135deg, rgba(99, 102, 241, 0.2) 0%, rgba(255, 255, 255, 0.05) 100%);
+    }
+
+    .divider {
+      display: flex;
+      align-items: center;
+      font-size: 0.85rem;
+      color: var(--text-muted);
+      text-transform: uppercase;
+      letter-spacing: 2px;
+      margin: 1rem 0 0.5rem;
+    }
+    
+    .divider::before, .divider::after {
+      content: '';
+      flex: 1;
+      height: 1px;
+      background: var(--card-border);
+      margin: 0 10px;
+    }
+  </style>
+</head>
+<body>
+
+  <button class="toggle-theme" onclick="toggleTheme()" aria-label="Alternar Tema">
+    <i class="fas fa-moon" id="theme-icon"></i>
+  </button>
+
+  <div class="container">
+    <header>
+      <img src="new_logo_lanes_01.png" alt="Marcos Lanes" class="profile-img" />
+      <h1>Marcos Lanes</h1>
+      <p class="bio">Analista de TI & Streamer</p>
+    </header>
+
+    <div class="link-group">
+      <a href="https://www.youtube.com/@marcoslanes?sub_confirmation=1" class="item-card youtube" target="_blank">
+        <i class="fab fa-youtube"></i> YouTube
+      </a>
+      <a href="https://www.kick.com/marcoslanes" class="item-card kick" target="_blank">
+        <i class="fab fa-kickstarter"></i> Kick
+      </a>
+      <a href="https://www.twitch.tv/marcoslanes" class="item-card twitch" target="_blank">
+        <i class="fab fa-twitch"></i> Twitch
+      </a>
+      <a href="https://www.instagram.com/marcoslanes" class="item-card instagram" target="_blank">
+        <i class="fab fa-instagram"></i> Instagram
+      </a>
+    </div>
+
+    <div class="divider">Destaque</div>
+    
+    <div class="link-group">
+      <a href="https://www.gvgmall.com/gvg/laneswin11" class="item-card offer-card" target="_blank">
+        <i class="fab fa-windows"></i>
+        <span class="offer-title">Windows 11 Pro Vitalício</span>
+      </a>
+    </div>
+
+    <div class="divider">Recomendações</div>
+
+    <div class="link-group">
+      <a href="https://www.mercadolivre.com.br/social/marcoslanes/lists" class="item-card mercadolivre" target="_blank">
+        <i class="fas fa-handshake"></i> Lojinha Mercado Livre
+      </a>
+    </div>
+
+    <div class="divider">Contato</div>
+
+    <div class="link-group">
+      <a href="contato.html" class="item-card">
+        <i class="fas fa-envelope"></i> Enviar Mensagem
+      </a>
+    </div>
+  </div>
+
+  <script>
+    function toggleTheme() {
+      document.body.classList.toggle('light-mode');
+      const icon = document.getElementById('theme-icon');
+      if (document.body.classList.contains('light-mode')) {
+        icon.classList.remove('fa-moon');
+        icon.classList.add('fa-sun');
+      } else {
+        icon.classList.remove('fa-sun');
+        icon.classList.add('fa-moon');
+      }
+    }
+  </script>
+</body>
+</html>
+
+```
