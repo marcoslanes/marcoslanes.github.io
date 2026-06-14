@@ -6,101 +6,110 @@
   <title>Marcos Lanes | Links</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Inter:wght@400;500;600;800&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
   <style>
     :root {
-      --primary: #4f46e5;
-      --bg: #000000;
-      --text: #ffffff;
-      --card-bg: rgba(255, 255, 255, 0.05);
-      --card-border: rgba(255, 255, 255, 0.1);
-      --success: #22c55e;
-      --mercadolivre: #fff159;
+      --primary: #6366f1;
+      --primary-glow: rgba(99, 102, 241, 0.4);
+      --bg-gradient: radial-gradient(circle at top, #1e1b4b, #000000);
+      --text: #f8fafc;
+      --text-muted: #94a3b8;
+      --card-bg: rgba(255, 255, 255, 0.03);
+      --card-border: rgba(255, 255, 255, 0.08);
+      --success: #10b981;
     }
 
     .light-mode {
-      --bg: #f4f4f4;
-      --text: #1e1e1e;
-      --card-bg: #ffffff;
-      --card-border: #ddd;
+      --bg-gradient: radial-gradient(circle at top, #e0e7ff, #f8fafc);
+      --text: #0f172a;
+      --text-muted: #475569;
+      --card-bg: rgba(255, 255, 255, 0.6);
+      --card-border: rgba(0, 0, 0, 0.05);
     }
 
     body {
       margin: 0;
-      padding: 2rem 0;
+      padding: 3rem 1rem;
       font-family: 'Inter', sans-serif;
-      background-color: var(--bg);
+      background: var(--bg-gradient);
       color: var(--text);
       display: flex;
       flex-direction: column;
       align-items: center;
       min-height: 100vh;
-      transition: background-color 0.3s, color 0.3s;
+      box-sizing: border-box;
+      transition: background 0.5s ease, color 0.5s ease;
     }
 
     .toggle-theme {
       position: absolute;
       top: 1.5rem;
-      left: 1.5rem;
+      right: 1.5rem;
       background: var(--card-bg);
+      backdrop-filter: blur(10px);
       border: 1px solid var(--card-border);
       color: var(--text);
-      padding: 8px 12px;
-      border-radius: 8px;
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
       cursor: pointer;
-      font-size: 0.9rem;
-      font-weight: 600;
-      z-index: 10;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.2rem;
+      transition: transform 0.3s ease;
+    }
+
+    .toggle-theme:hover {
+      transform: rotate(15deg) scale(1.1);
     }
 
     .container {
-      width: 90%;
-      max-width: 450px;
+      width: 100%;
+      max-width: 420px;
       text-align: center;
+      display: flex;
+      flex-direction: column;
+      gap: 1.5rem;
+    }
+
+    header {
+      margin-bottom: 1rem;
     }
 
     .profile-img {
-      width: 140px;
-      height: 140px;
+      width: 120px;
+      height: 120px;
       border-radius: 50%;
+      object-fit: cover;
       margin-bottom: 1rem;
-      animation: float 3s ease-in-out infinite;
+      border: 2px solid var(--card-border);
+      box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+      animation: float 4s ease-in-out infinite;
     }
 
     @keyframes float {
       0%, 100% { transform: translateY(0); }
-      50% { transform: translateY(-10px); }
+      50% { transform: translateY(-8px); }
     }
 
     h1 {
-      font-family: 'Bebas Neue', cursive;  
-      font-size: 2.8rem;
+      font-family: 'Bebas Neue', sans-serif;  
+      font-size: 3rem;
       margin: 0;
-      font-weight: 800;
-      letter-spacing: -1.5px;
+      letter-spacing: 1px;
       line-height: 1;
     }
 
-    .section-title {
-      font-family: 'Bebas Neue', cursive;
-      font-size: 1.8rem;
-      text-align: left;
-      margin: 2rem 0 1rem;
-      display: flex;
-      align-items: center;
-      gap: 10px;
-      color: var(--primary);
+    .bio {
+      font-size: 0.95rem;
+      color: var(--text-muted);
+      margin: 0.5rem 0 0;
+      font-weight: 500;
     }
 
-    .section-title::after {
-      content: "";
-      height: 1px;
-      background: var(--card-border);
-      flex-grow: 1;
-    }
-
-    .link-list {
+    .link-group {
       display: flex;
       flex-direction: column;
       gap: 0.8rem;
@@ -109,134 +118,124 @@
     .item-card {
       display: flex;
       align-items: center;
-      padding: 1rem 1.2rem;
+      padding: 1rem;
       background: var(--card-bg);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
       border: 1px solid var(--card-border);
-      border-radius: 12px;
+      border-radius: 16px;
       text-decoration: none;
-      color: inherit;
+      color: var(--text);
       font-weight: 600;
-      transition: all 0.2s ease;
+      font-size: 1rem;
+      transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+      position: relative;
+      overflow: hidden;
     }
 
-    /* Estilização do ícone quadrado arredondado */
     .item-card i {
-      font-size: 1.2rem;
-      width: 40px;
-      height: 40px;
+      font-size: 1.3rem;
+      width: 44px;
+      height: 44px;
       margin-right: 15px;
-      background: rgba(255, 255, 255, 0.1);
+      background: rgba(255, 255, 255, 0.05);
       display: flex;
       align-items: center;
       justify-content: center;
-      border-radius: 10px; /* Cantos arredondados */
-      transition: all 0.2s ease;
-    }
-
-    .item-card:hover {
-      background: var(--primary);
-      color: white;
-      transform: scale(1.02);
-      border-color: transparent;
-    }
-
-    .item-card:hover i {
-      background: rgba(255, 255, 255, 0.2);
-    }
-
-    /* Cores de Hover Redes Sociais */
-    .youtube:hover { background: #FF0000; }
-    .kick:hover { background: #00E701; color: black; }
-    .twitch:hover { background: #9146FF; }
-    .instagram:hover { background: linear-gradient(45deg, #f09433, #dc2743, #bc1888); }
-
-    /* Estilo Especial Mercado Livre */
-    .mercado-livre:hover { 
-        background: var(--mercadolivre); 
-        color: #2d3277; 
-    }
-    .mercado-livre i { color: #2d3277; background: #fff159; }
-
-    /* --- ESTILO DA THUMB DE OFERTA CHAMATIVA --- */
-    .offer-card {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      padding: 1.8rem;
-      background: linear-gradient(135deg, rgba(79, 70, 229, 0.15) 0%, rgba(255, 255, 255, 0.05) 100%);
-      border: 2px solid var(--primary);
-      border-radius: 16px;
-      text-decoration: none;
-      color: inherit;
-      position: relative;
-      overflow: hidden;
+      border-radius: 12px;
       transition: all 0.3s ease;
     }
 
-    .offer-card:hover {
-      transform: scale(1.03);
-      box-shadow: 0 0 20px rgba(79, 70, 229, 0.4);
+    .item-card:hover {
+      transform: translateY(-3px);
+      background: rgba(255, 255, 255, 0.08);
+    }
+
+    /* Cores de Hover Específicas com Glow */
+    .youtube:hover { border-color: #ff0000; box-shadow: 0 4px 20px rgba(255, 0, 0, 0.2); }
+    .youtube:hover i { color: #ff0000; background: rgba(255, 0, 0, 0.1); }
+    
+    .kick:hover { border-color: #53fc18; box-shadow: 0 4px 20px rgba(83, 252, 24, 0.2); }
+    .kick:hover i { color: #53fc18; background: rgba(83, 252, 24, 0.1); }
+    
+    .twitch:hover { border-color: #9146FF; box-shadow: 0 4px 20px rgba(145, 70, 255, 0.2); }
+    .twitch:hover i { color: #9146FF; background: rgba(145, 70, 255, 0.1); }
+    
+    .instagram:hover { border-color: #e1306c; box-shadow: 0 4px 20px rgba(225, 48, 108, 0.2); }
+    .instagram:hover i { color: #e1306c; background: rgba(225, 48, 108, 0.1); }
+
+    .mercadolivre:hover { border-color: #ffe600; box-shadow: 0 4px 20px rgba(255, 230, 0, 0.2); }
+    .mercadolivre:hover i { color: #ffe600; background: rgba(255, 230, 0, 0.1); }
+
+    /* Card de Oferta Modernizado */
+    .offer-card {
+      background: linear-gradient(135deg, rgba(99, 102, 241, 0.1) 0%, rgba(255, 255, 255, 0.02) 100%);
+      border: 1px solid var(--primary);
+      flex-direction: column;
+      padding: 1.5rem;
+      text-align: center;
+      box-shadow: 0 0 15px var(--primary-glow);
     }
 
     .offer-card i {
-      font-size: 2.8rem;
-      margin-bottom: 12px;
-      color: #fbbf24;
-      background: none; /* Remove o fundo quadrado para o card de oferta grande */
-      width: auto; height: auto;
+      background: transparent;
+      font-size: 2.5rem;
+      color: #38bdf8;
+      width: auto;
+      height: auto;
+      margin: 0 0 10px 0;
     }
 
-    .offer-title {
-      font-size: 1.2rem;
+    .offer-card .offer-title {
       font-weight: 800;
-      margin-bottom: 8px;
+      font-size: 1.1rem;
+      letter-spacing: 0.5px;
+    }
+
+    .offer-card:hover {
+      transform: translateY(-4px) scale(1.02);
+      box-shadow: 0 8px 25px var(--primary-glow);
+      background: linear-gradient(135deg, rgba(99, 102, 241, 0.2) 0%, rgba(255, 255, 255, 0.05) 100%);
+    }
+
+    .divider {
+      display: flex;
+      align-items: center;
+      font-size: 0.85rem;
+      color: var(--text-muted);
       text-transform: uppercase;
+      letter-spacing: 2px;
+      margin: 1rem 0 0.5rem;
     }
-
-    .offer-badge {
-      background: var(--success);
-      color: white;
-      padding: 4px 15px;
-      border-radius: 50px;
-      font-size: 0.75rem;
-      font-weight: 800;
-      letter-spacing: 1px;
-    }
-
-    @keyframes shine {
-      0% { left: -150%; }
-      20% { left: 150%; }
-      100% { left: 150%; }
-    }
-
-    .offer-card::after {
+    
+    .divider::before, .divider::after {
       content: '';
-      position: absolute;
-      top: -50%;
-      left: -150%;
-      width: 200%;
-      height: 200%;
-      background: linear-gradient(45deg, transparent, rgba(255,255,255,0.2), transparent);
-      transform: rotate(45deg);
-      animation: shine 3.5s infinite;
+      flex: 1;
+      height: 1px;
+      background: var(--card-border);
+      margin: 0 10px;
     }
   </style>
 </head>
 <body>
 
-  <button class="toggle-theme" onclick="toggleTheme()">🌓</button>
+  <button class="toggle-theme" onclick="toggleTheme()" aria-label="Alternar Tema">
+    <i class="fas fa-moon" id="theme-icon"></i>
+  </button>
 
   <div class="container">
-    <img src="new_logo_lanes_01.png" alt="Marcos Lanes" class="profile-img" />
-    <h1>Marcos Lanes</h1>
+    <header>
+      <img src="new_logo_lanes_01.png" alt="Marcos Lanes" class="profile-img" />
+      <h1>Marcos Lanes</h1>
+      <p class="bio">Analista de TI & Streamer</p>
+    </header>
 
-    <div class="section-title">Redes Sociais</div>
-    <div class="link-list">
+    <div class="link-group">
       <a href="https://www.youtube.com/@marcoslanes?sub_confirmation=1" class="item-card youtube" target="_blank">
         <i class="fab fa-youtube"></i> YouTube
       </a>
       <a href="https://www.kick.com/marcoslanes" class="item-card kick" target="_blank">
-        <i class="fab fa-kickstarter"></i> Kick.tv
+        <i class="fab fa-kickstarter"></i> Kick
       </a>
       <a href="https://www.twitch.tv/marcoslanes" class="item-card twitch" target="_blank">
         <i class="fab fa-twitch"></i> Twitch
@@ -246,23 +245,26 @@
       </a>
     </div>
 
-    <div class="section-title">Oferta Especial</div>
-    <div class="link-list">
-      <a href="https://www.gvgmall.com/gvg/laneswin11" class="offer-card" target="_blank">
+    <div class="divider">Destaque</div>
+    
+    <div class="link-group">
+      <a href="https://www.gvgmall.com/gvg/laneswin11" class="item-card offer-card" target="_blank">
         <i class="fab fa-windows"></i>
         <span class="offer-title">Windows 11 Pro Vitalício</span>
       </a>
     </div>
 
-    <div class="section-title">Mercado Livre</div>
-    <div class="link-list">
-      <a href="https://www.mercadolivre.com.br/social/marcoslanes/lists" class="item-card mercado-livre" target="_blank">
-        <i class="fas fa-handshake"></i> Minhas Recomendações
+    <div class="divider">Recomendações</div>
+
+    <div class="link-group">
+      <a href="https://www.mercadolivre.com.br/social/marcoslanes/lists" class="item-card mercadolivre" target="_blank">
+        <i class="fas fa-handshake"></i> Lojinha Mercado Livre
       </a>
     </div>
 
-    <div class="section-title">Contato</div>
-    <div class="link-list">
+    <div class="divider">Contato</div>
+
+    <div class="link-group">
       <a href="contato.html" class="item-card">
         <i class="fas fa-envelope"></i> Enviar Mensagem
       </a>
@@ -272,6 +274,14 @@
   <script>
     function toggleTheme() {
       document.body.classList.toggle('light-mode');
+      const icon = document.getElementById('theme-icon');
+      if (document.body.classList.contains('light-mode')) {
+        icon.classList.remove('fa-moon');
+        icon.classList.add('fa-sun');
+      } else {
+        icon.classList.remove('fa-sun');
+        icon.classList.add('fa-moon');
+      }
     }
   </script>
 </body>
